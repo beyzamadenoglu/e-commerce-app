@@ -1,0 +1,19 @@
+.loginContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+  
+    .formContainer {
+      width: 50%;
+    }
+  
+    .imgContainer {
+      width: 50%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      background-image: url('../../../public/images/background.jpg');
+    }
+  }
+  
