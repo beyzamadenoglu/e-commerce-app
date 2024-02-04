@@ -1,0 +1,16 @@
+.loginContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+}
+.loginContainer .formContainer {
+  width: 50%;
+}
+.loginContainer .imgContainer {
+  width: 50%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-image: url("../../../public/images/background.jpg");
+}/*# sourceMappingURL=login.module.css.map */

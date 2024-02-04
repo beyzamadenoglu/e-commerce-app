@@ -1,0 +1,16 @@
+.mantineAuthForm {
+  max-width: 300px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+.mantineAuthForm h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.mantineAuthForm Button {
+  margin-top: 10px;
+  width: 50%;
+  margin-left: auto;
+  margin-top: 5%;
+}/*# sourceMappingURL=authForm.module.css.map */

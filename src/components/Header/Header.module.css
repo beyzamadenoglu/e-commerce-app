@@ -1,0 +1,16 @@
+.header {
+  height: 70px;
+  box-shadow: 0 0 10px rgba(116, 97, 195, 0.26);
+  padding: 0 10px 10px;
+}
+
+.logo {
+  width: 70px;
+}
+
+.logoutButton {
+  color: black;
+  background: white;
+  border: 2px solid #8a99ed;
+  border-radius: 5px;
+}/*# sourceMappingURL=Header.module.css.map */
