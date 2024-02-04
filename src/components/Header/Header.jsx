@@ -34,7 +34,7 @@ export default function Header() {
   } 
 
   return (
-    <Box pb={120}>
+    <Box pb={50}>
       <header className={classes.header}>
         <Group justify="space-between" h="100%">
           <img className={classes.logo} src="images/logo.png" alt="logo" />
@@ -67,7 +67,7 @@ export default function Header() {
         zIndex={1000000}
       >
         <ScrollArea h={`calc(100vh - ${rem(80)})`} mx="-md">
-          <Group justify="center" grow pb="xl" px="md">
+          <Group justify="center" grow pb="xs" px="md">
             {user?.email ? (
               <>
                 <Text>{user.email}</Text>
