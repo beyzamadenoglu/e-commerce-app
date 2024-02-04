@@ -1,66 +1,44 @@
 'use client'
-import React, { useCallback } from 'react';
-import { EmblaOptionsType, EmblaCarouselType } from 'embla-carousel';
+import React from 'react';
+import { EmblaOptionsType } from 'embla-carousel';
 import useEmblaCarousel from 'embla-carousel-react';
-import {
-    PrevButton,
-    NextButton,
-    usePrevNextButtons
-} from './emblaCarouselArrowButtons';
 import Autoplay from 'embla-carousel-autoplay';
-import imageByIndex from './imageByIndex';
+
+import './embla.scss';
+
+type CategoryType = {
+  id: number;
+  name: string;
+  images: string[];
+  creationAt: string;
+  updatedAt: string;
+};
 
 type PropType = {
-    slides: number[];
-    options?: EmblaOptionsType;
+  slides: CategoryType[];
+  options?: EmblaOptionsType;
 };
 
 const EmblaCarousel: React.FC<PropType> = (props) => {
-    const { slides, options } = props;
-    const [emblaRef, emblaApi] = useEmblaCarousel(options, [Autoplay()]);
+  const { slides, options } = props;
+  const [emblaRef, emblaApi] = useEmblaCarousel(options, [Autoplay()]);
 
-    const onButtonClick = useCallback((emblaApi: EmblaCarouselType) => {
-        const { autoplay } = emblaApi.plugins();
-        if (!autoplay) return;
-
-        const anyAutoplay = autoplay as any;
-        if (anyAutoplay.options?.stopOnInteraction !== false) {
-            anyAutoplay.stop();
-        }
-    }, []);
-
-    const {
-        prevBtnDisabled,
-        nextBtnDisabled,
-        onPrevButtonClick,
-        onNextButtonClick
-    } = usePrevNextButtons(emblaApi, onButtonClick);
-
-    return (
-        <div className="embla">
-            <div className="embla__viewport" ref={emblaRef}>
-                <div className="embla__container">
-                    {slides.map((index) => (
-                        <div className="embla__slide" key={index}>
-                            <div className="embla__slide__number">
-                                <span>{index + 1}</span>
-                            </div>
-                            <img
-                                className="embla__slide__img"
-                                src={imageByIndex(index)}
-                                alt={`Your alt text ${index + 1}`}
-                            />
-                        </div>
-                    ))}
-                </div>
+  return (
+    <>
+     <h2 className="" >Top Products of Month</h2>
+      <div className="embla">
+      <div className="embla__viewport" ref={emblaRef}>
+        <div className="embla__container">
+          {slides.map((category) => (
+            <div className="embla__slide" key={category.id}>
+              <img src={category?.images[0]} alt={category.name} className="embla__slide__img" />
             </div>
-
-            <div className="embla__buttons">
-                <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
-                <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
-            </div>
+          ))}
         </div>
-    );
+      </div>
+    </div>
+    </>
+  );
 };
 
 export default EmblaCarousel;
