@@ -40,6 +40,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
           message: 'User registered successfully!',
           color: 'teal',
         });
+        router.push('/login');
 
       } else {
         const res = await signInUserWithEmailAndPassword(userInputs.email, userInputs.password);
@@ -50,8 +51,8 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
           message: 'Login successful!',
           color: 'teal',
         });
+        router.push('/home');
       }
-      router.push('/');
     } catch (e: any) {
       console.log(e);
       setNotification({
@@ -70,7 +71,9 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
             title={notification.title}
             color={notification.color}
             onClose={() => setNotification(null)}
-          />
+          >
+            {notification.message}
+            </Notification>
         )}
         <TextInput
           label="Email"

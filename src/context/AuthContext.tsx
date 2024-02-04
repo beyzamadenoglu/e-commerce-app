@@ -1,7 +1,8 @@
 'use client'
-import React, { createContext, useContext, ReactNode, useEffect, useState } from 'react';
+import React, { createContext, useContext, ReactNode } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { User } from 'firebase/auth';
+
 
 import { auth } from '@/lib/firebase/config';
 

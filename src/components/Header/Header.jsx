@@ -10,16 +10,28 @@ import {
   rem,
   useMantineTheme,
 } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';;
+import { useDisclosure } from '@mantine/hooks';
+import { signOut } from 'firebase/auth';
+import { useRouter } from 'next/navigation';
+
 
 import { useAuth } from '@/context/AuthContext'; 
+import { auth } from '@/lib/firebase/config';
 import classes from './Header.module.scss';
 
 export default function Header() {
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
   const theme = useMantineTheme();
 
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
+
+  const router = useRouter();
+
+
+  const handleLogout = async() => {
+    signOut(auth);
+    router.push('/login');
+  } 
 
   return (
     <Box pb={120}>
@@ -31,7 +43,7 @@ export default function Header() {
             {user?.email ? (
               <>
                 <Text>{user.email}</Text>
-                <Button className={classes.logoutButton} onClick={logout}>Logout</Button>
+                <Button onClick={handleLogout} className={classes.logoutButton} >Logout</Button>
               </>
             ) : (
               <>
@@ -59,12 +71,12 @@ export default function Header() {
             {user?.email ? (
               <>
                 <Text>{user.email}</Text>
-                <Button onClick={logout}>Logout</Button>
+                <Button onClick={handleLogout}>Logout</Button>
               </>
             ) : (
               <>
-                <Button variant="default">Log in</Button>
-                <Button>Sign up</Button>
+                <Button onClick={() => {router.push("/login")}} onClickvariant="default">Log in</Button>
+                <Button onClick={() => router.push("/register")} className={classes.logoutButton}>Sign up</Button>
               </>
             )}
           </Group>

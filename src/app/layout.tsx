@@ -3,7 +3,6 @@ import { AuthProvider } from "@/context/AuthContext";
 import { ColorSchemeScript, MantineProvider } from '@mantine/core';
 
 import ProtectedRoute from '@/components/protectedRoute';
-import Layout from '@/components/Layout/Layout';
 
 export const metadata = {
   title: 'E-commerce app',
@@ -16,6 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
 
+  
   return (
     <html lang="en">
       <head>
@@ -25,9 +25,7 @@ export default function RootLayout({
         <MantineProvider>
           <AuthProvider>
             <ProtectedRoute>
-              <Layout>
             {children}
-            </Layout>
             </ProtectedRoute>
           </AuthProvider>
         </MantineProvider>
