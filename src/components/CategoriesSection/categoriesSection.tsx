@@ -16,13 +16,12 @@ type PropType = {
   };
 
 const CategoriesSection: React.FC<PropType> = ({ categories }) => {
-
   return (
     <div className={styles.categoriesSection}>
       <h2 className={styles.sectionTitle}>Categories</h2>
       <div className={styles.cardsContainer}>
-        {categories?.map((category:any) => (
-          <CategoriesCard key={category.id} image={category.image} text={category.name} />
+        {categories.slice(0,5)?.map((category:any) => (
+          <CategoriesCard id={category?.id} image={category.image} text={category.name} />
         ))}
       </div>
     </div>

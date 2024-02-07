@@ -29,7 +29,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
       <div className="embla">
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
-          {slides.map((category) => (
+          {slides?.map((category) => (
             <div className="embla__slide" key={category.id}>
               <img src={category?.images[0]} alt={category.name} className="embla__slide__img" />
             </div>

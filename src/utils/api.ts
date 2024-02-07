@@ -1,20 +1,33 @@
-// api.ts
+import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export const req = async <T>(
   path: string,
-  options?: RequestInit
+  method: 'GET' | 'POST' = 'GET',
+  data?: Record<string, any>,
+  options?: AxiosRequestConfig
 ): Promise<T> => {
+  const url = `${API_BASE_URL}${path}`;
+
+  const axiosOptions: AxiosRequestConfig = {
+    method,
+    url,
+    headers: {
+      'Content-Type': 'application/json',
+      ...(options?.headers || {}),
+    },
+    ...(method === 'POST' && data ? { data } : {}),
+    ...options,
+  };
+
   try {
-    const response = await fetch(`${API_BASE_URL}${path}`, options);
+    const response: AxiosResponse<T> = await axios(axiosOptions);
 
-    if (!response.ok) {
-      throw new Error(`Request failed with status ${response.status}`);
-    }
-
-    return await response.json();
+    return response.data;
   } catch (error: any) {
-    // Provide an explicit type for the 'error' variable
     throw new Error(`API request error: ${error.message}`);
   }
 };
+
+

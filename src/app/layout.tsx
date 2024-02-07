@@ -1,6 +1,7 @@
 import '@mantine/core/styles.css';
 import { AuthProvider } from "@/context/AuthContext";
 import { ColorSchemeScript, MantineProvider } from '@mantine/core';
+import StoreProvider from './storeProvider'
 
 import ProtectedRoute from '@/components/protectedRoute';
 
@@ -24,9 +25,11 @@ export default function RootLayout({
       <body>
         <MantineProvider>
           <AuthProvider>
+            <StoreProvider>
             <ProtectedRoute>
             {children}
             </ProtectedRoute>
+            </StoreProvider>
           </AuthProvider>
         </MantineProvider>
       </body>

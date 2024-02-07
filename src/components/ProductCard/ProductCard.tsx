@@ -1,13 +1,14 @@
+'use client'
 import { Card, Image, Text } from '@mantine/core';
 
-const CategoriesCard = ({ id, image, text }: any) => {
+const ProductCard = ({ image, text }: any) => {
 
   return (
     <Card
       shadow="sm"
       padding="xl"
       component="a"
-      href={`/${id}`}
+      href=""
       target="_blank"
     >
       <Card.Section>
@@ -24,4 +25,4 @@ const CategoriesCard = ({ id, image, text }: any) => {
   );
 }
 
-export default CategoriesCard;
+export default ProductCard;
