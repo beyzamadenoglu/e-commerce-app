@@ -34,7 +34,7 @@ export default function Header() {
   } 
 
   return (
-    <Box pb={50}>
+    <Box>
       <header className={classes.header}>
         <Group justify="space-between" h="100%">
           <img className={classes.logo} src="images/logo.png" alt="logo" />

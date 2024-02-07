@@ -12,6 +12,7 @@
     "@mantine/core": "^7.5.1",
     "@mantine/hooks": "^7.5.1",
     "@reduxjs/toolkit": "^2.1.0",
+    "@tabler/icons-react": "^2.47.0",
     "@types/firebase": "^3.2.1",
     "@zeit/next-sass": "^1.0.1",
     "axios": "^1.6.7",

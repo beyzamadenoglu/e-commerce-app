@@ -2,8 +2,6 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 5% 2%;
-  padding: 20px;
 }
 .container div {
   padding: 20px;
