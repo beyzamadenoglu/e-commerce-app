@@ -16,7 +16,7 @@ import classes from './Navbar.module.css';
 
 
 
-export function Navbar({ data }:any) {
+export function Navbar({ data, handleCategoryClick }:any) {
   const [active, setActive] = useState('Billing');
 
   const links = data.map((item:any) => (
@@ -28,6 +28,7 @@ export function Navbar({ data }:any) {
       onClick={(event) => {
         event.preventDefault();
         setActive(item);
+        handleCategoryClick()
       }}
     >
       <span>{item}</span>
